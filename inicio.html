@@ -14,10 +14,11 @@
         <div class="form-header">
             <div class="titles">
                 <div class="title-login">Inicio</div>
+ <div class="title-register">Registrar</div>
                 <div class="title-register">Register</div>
             </div>
         </div>
-        <!-- LOGIN FORM -->
+        <!-- REGISTER FORM -->
 <form action="validar.php" method="post" class="login-form" autocomplete="off">
     <div class="input-box">
         <input type="email" class="input-field" id="log-email" name="correo" required>
@@ -30,16 +31,19 @@
         <i class='bx bx-lock-alt icon'></i>
     </div>
     <div class="form-cols">
-        <div class="col-1"></div>
+        <div class="col-1">
+<imput type="checkbox" id"agree">
+<Label for="agree"> se agrega términos y condiciones<label>
+</div>
         <div class="col-2">
             <a href="#">¿Olvidó su contraseña?</a>
         </div>
     </div>
     <div class="input-box">
-        <button class="btn-submit" type="submit" id="SignInBtn">Iniciar sesión <i class='bx bx-log-in'></i></button>
+        <button class="btn-submit" type="submit" id="SignUpBtn">Registrar<i class='bx bx-log-out'></i></button>
     </div>
     <div class="switch-form">
-        <span>¿No tiene cuenta? <a href="#" onclick="registerFunction()">Registro</a></span>
+        <span>¿No tiene cuenta? <a href="#" onclick="registerFunction()">inico</a></span>
     </div>
 </form>
 
