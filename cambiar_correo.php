@@ -1,4 +1,5 @@
 <?php
+// modificar la página y mezclar la con el index
 // Datos de conexión a la base de datos
 $servername = "localhost"; // Reemplaza con tu servidor
 $username = "root"; // Reemplaza con tu usuario
