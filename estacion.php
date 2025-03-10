@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+< html>
 <head>
   <title>Admin_Inicio</title>
   <link rel="icon" href="/administracion.png">
