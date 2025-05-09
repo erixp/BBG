@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['correo'] = $correo;
 
         // Redirige a otra página si los datos son correctos
-        header("Location: estacion.php");
+        header("Location: menu.html");
         exit(); // Asegúrate de llamar a exit después de header para detener la ejecución del script
     } else {
         // Verificar si el correo existe
