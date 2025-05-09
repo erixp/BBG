@@ -1,0 +1,38 @@
+CREATE DATABASE asistencia_db;
+
+USE asistencia_db;
+
+CREATE TABLE alumnos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    apellidos VARCHAR(50) NOT NULL,
+    matricula VARCHAR(20) UNIQUE NOT NULL
+);
+
+INSERT INTO alumnos (nombre, apellidos, matricula)
+VALUES ('Juan', 'Pérez', 'M123456');
+
+INSERT INTO alumnos (nombre, apellidos, matricula)
+VALUES ('María', 'García', 'M234567');
+
+INSERT INTO alumnos (nombre, apellidos, matricula)
+VALUES ('Carlos', 'López', 'M345678');
+
+INSERT INTO alumnos (nombre, apellidos, matricula)
+VALUES ('Ana', 'Ramírez', 'M456789');
+
+INSERT INTO alumnos (nombre, apellidos, matricula)
+VALUES ('Luis', 'Hernández', 'M567890');
+
+-------------------------------------------------------------------------------------------------
+CREATE TABLE asistencias (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    apellidos VARCHAR(50) NOT NULL,
+    matricula VARCHAR(20) NOT NULL,
+    clase VARCHAR(20) NOT NULL,
+    fecha DATE NOT NULL,
+    hora TIME NOT NULL,
+    asistencia ENUM('Asistencia', 'Retardo', 'Falta') NOT NULL,
+    FOREIGN KEY (matricula) REFERENCES alumnos(matricula)
+);

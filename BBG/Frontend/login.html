@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- BOXICONS -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <!----> CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <title>Inicio Sesion | BBG</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="form-header">
+            <div class="titles">
+                <div class="title-login">Inicio</div>
+                <div class="title-register">Registro</div>
+            </div>
+        </div>
+        <!-- LOGIN FORM -->
+        <form action="validar.php" method="post" class="login-form" autocomplete="off">
+            <div class="input-box">
+                <input type="email" class="input-field" id="log-email" name="correo" required>
+                <label for="log-email" class="label">Correo</label>
+                <i class='bx bx-envelope icon'></i>
+            </div>
+            <div class="input-box">
+                <input type="password" class="input-field" id="log-pass" name="matricula" required>
+                <label for="log-pass" class="label">Contraseña</label>
+                <i class='bx bx-lock-alt icon'></i>
+            </div>
+            <div class="form-cols">
+                <div class="col-1"></div>
+                <div class="col-2">
+                    <a href="#">Olvido su contraseña?</a>
+                </div>
+            </div>
+            <div class="input-box">
+                <button class="btn-submit" id="SignInBtn">Iniciar Sesion <i class='bx bx-log-in' ></i></button>
+            </div>
+            <div class="switch-form">
+                <span>No tienes cuenta? <a href="#" onclick="registerFunction()">Registro</a></span>
+            </div>
+        </form>
+
+        <!-- REGISTER FORM -->
+        <div class="form-container">
+            <form action="validar_registro.php" method="post" class="register-form" autocomplete="off">
+                <div class="form-row">
+                    <div class="input-box">
+                        <input type="text" class="input-field" id="nombre" name="nombre" required>
+                        <label for="nombre" class="label">Nombre Completo</label>
+                        <i class='bx bx-user icon'></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="text" class="input-field" id="matricula" name="matricula" required>
+                        <label for="matricula" class="label">Matrícula</label>
+                        <i class='bx bx-id-card icon'></i>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="input-box">
+                        <input type="email" class="input-field" id="correo" name="correo" required>
+                        <label for="correo" class="label">Correo</label>
+                        <i class='bx bx-envelope icon'></i>
+                    </div>
+                    <div class="input-box">
+                        <input type="password" class="input-field" id="reg-pass" required>
+                        <label for="reg-pass" class="label">Contraseña</label>
+                        <i class='bx bx-lock-alt icon'></i>
+                    </div>
+                </div>
+                <div class="form-cols">
+                    <div class="col-1">
+                        <input type="checkbox" id="agree">
+                        <label for="agree"> Acepto los términos y condiciones</label>
+                    </div>
+                    <div class="col-2"></div>
+                </div>
+                <div class="input-box">
+                    <button class="btn-submit" id="SignUpBtn">Registrar <i class='bx bx-user-plus'></i></button>
+                </div>
+                <div class="switch-form">
+                    <span>¿Ya tienes cuenta? <a href="#" onclick="loginFunction()">Iniciar sesión</a></span>
+                </div>
+            </form>
+        </div>
+        
+        
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

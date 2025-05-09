@@ -1,0 +1,5 @@
+Profesor, la carpeta del escaner aun le falta mucho ya aun no he podido
+ vincularla bien con la base datos, ya q hay unos momentos donde se 
+ desconecta la vinculacion la base de datos,  ya q ando usando otra base de datos 
+ por lo mientras par ver cual es el problema, otra cosa jesus es el ayudo con estos codigos del 
+ escaner

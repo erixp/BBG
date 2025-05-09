@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escáner de Código QR</title>
+</head>
+<body>
+  <h1>Escáner de Código QR</h1>
+  <video id="video" autoplay muted playsinline></video>
+  <canvas id="canvas" style="display:none;"></canvas>
+  <p id="output">Haz clic en el botón para iniciar la cámara.</p>
+  <p id="scanningStatus" style="display:none;">Escaneando...</p>
+  <button id="startBtn">Iniciar escaneo</button>
+  <button id="resetBtn" style="display: none;">Escanear otro</button>
+  <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+  <script>
+    const video = document.getElementById('video');
+    const canvasElement = document.getElementById('canvas');
+    const canvas = canvasElement.getContext('2d');
+    const output = document.getElementById('output');
+    const startBtn = document.getElementById('startBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const scanningStatus = document.getElementById('scanningStatus');
+    let scanning = false;
+    let stream = null;
+
+    startBtn.addEventListener('click', startScanner);
+    resetBtn.addEventListener('click', () => {
+      output.textContent = "Apunta la cámara a un código QR para escanearlo.";
+      resetBtn.style.display = "none";
+      startScanner();
+    });
+
+    async function startScanner() {
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({ video: { facingMode: 'environment' }, audio: false });
+        video.srcObject = stream;
+        video.style.display = 'block';
+        startBtn.style.display = "none";
+        scanningStatus.style.display = "block";
+        scanning = true;
+
+        video.addEventListener("loadedmetadata", () => {
+          canvasElement.width = video.videoWidth;
+          canvasElement.height = video.videoHeight;
+          scanFrame();
+        }, { once: true });
+      } catch (error) {
+        output.textContent = "Error al acceder a la cámara.";
+      }
+    }
+
+    function scanFrame() {
+      if (!scanning) return;
+      canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
+      const imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
+      const code = jsQR(imageData.data, imageData.width, imageData.height, { inversionAttempts: 'dontInvert' });
+
+      if (code) {
+        output.textContent = `Código QR detectado: ${code.data}`;
+        scanning = false;
+        video.style.display = 'none';
+        scanningStatus.style.display = "none";
+        resetBtn.style.display = 'inline-block';
+        if (stream) stream.getTracks().forEach(track => track.stop());
+
+        fetch('../guardar_asistencia.php', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: `matricula=${code.data}`
+        }).then(res => res.text()).then(res => alert(res));
+      } else {
+        output.textContent = "Escaneando...";
+        requestAnimationFrame(scanFrame);
+      }
+    }
+  </script>
+</body>
+</html>
