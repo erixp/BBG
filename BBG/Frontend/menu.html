@@ -1,11 +1,67 @@
+<!-- Aqui va estar la pagina de publicidad de la empresa, el codigo de esta página la tiene este diego,
+tiene la maquetacion, ya que la informacion q debe q ir, esta mal ya nos lo dijo el profesor aguado y
+el profesor raul, y es diego quien se encarga ahorita de la documentacion -->
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BBG - Bienvenido</title>
+  <link rel="stylesheet" href="css/menu.css">
+
 </head>
 <body>
-    
+  <!-- Modal de Bienvenida -->
+  <div id="welcomeModal">
+    <div>
+      <h2>Bienvenido</h2>
+      <p>Nos alegra tenerte aquí. Descubre todas las soluciones que tenemos para ti.</p>
+      <button id="closeModal">Cerrar</button>
+    </div>
+  </div>
+
+  <!-- Barra de menú -->
+  <header>
+    <div class="logo">BBG</div>
+    <nav>
+      <ul>
+        <li><a href="#">Asistencia</a></li>
+        <li><a href="#">Reporte</a></li>
+        <li><a href="#">Alumnos</a></li>
+        <li><a href="#" class="btn">Perfil</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <!-- Cuadro de información con calendario y texto -->
+  <div class="info-box">
+    <!-- Calendario digital en lugar de una imagen -->
+    <div class="calendar">
+      <div class="calendar-day">09/05</div>
+      <div class="calendar-weekday">Martes</div>
+    </div>
+    <div class="info-text">
+      <h3>Título de Información</h3>
+      <p>
+        Aquí tienes un ejemplo de cuadro de información. Ahora se muestra un calendario digital que ilustra visualmente la fecha.
+      </p>
+    </div>
+  </div>
+  
+  <script>
+    // Mostrar el mensaje de bienvenida al cargar la página
+    document.addEventListener('DOMContentLoaded', function() {
+      var modal = document.getElementById('welcomeModal');
+      var closeModal = document.getElementById('closeModal');
+      
+      // Al hacer clic en el botón "Cerrar", se oculta el modal
+      closeModal.addEventListener('click', function() {
+        modal.classList.add('hide');
+      });
+    });
+  </script>
 </body>
+</html>
+
 </html>
